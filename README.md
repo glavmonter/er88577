@@ -1,0 +1,3 @@
+# ER88577 MIPI DSI panel
+
+EQT700HKY008P panel
