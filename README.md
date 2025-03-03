@@ -151,6 +151,8 @@ xrandr --output DSI-1 --transform 1,0,0,0,1,60,0,0,1
             reset-gpios = <&gpio1 1 1>;
             rotation = <270>;
             power-supply = <&vcc5v0_sys>;
+            bsit;
+            debug;
         };
     };
 };
