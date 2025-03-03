@@ -9,6 +9,12 @@
 #
 # Normal rules
 #
+
+drm_mipi_dsi_ex.*
+drm_probe_helper_ex.*
+er88577.c
+panel-er88577b-*
+
 mods
 .*
 *.o
