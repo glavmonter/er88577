@@ -362,17 +362,28 @@ static const struct panel_desc starry_er88577_desc = {
 	.power_off_delay_ms = 1000,
 };
 #else
-static const struct drm_display_mode starry_er88577_default_mode = {
-	.clock	= (800 + 80 + 20 + 80) * (1280 + 20 + 4 + 12) * 60 / 1000,
-	.hdisplay = 800,
-	.hsync_start = 800 + 80,
-	.hsync_end = 800 + 80 + 20,
-	.htotal = 800 + 80 + 20 + 80,
 
-	.vdisplay = 1280,
-	.vsync_start = 1280 + 20,
-	.vsync_end = 1280 + 20 + 4,
-	.vtotal = 1280 + 20 + 4 + 12,
+#define H_ACTIVE		800
+#define H_FRONT_PORCH 	80 		// 80
+#define H_SYNC			20 		// 20
+#define H_BACK_PORCH	80 		// 80
+
+#define V_ACTIVE		1280
+#define V_FRONT_PORCH	10		// 10
+#define V_SYNC			4		// 4
+#define V_BACK_PORCH	12		// 12
+
+static const struct drm_display_mode starry_er88577_default_mode = {
+	.clock	= (H_ACTIVE + H_FRONT_PORCH + H_SYNC + H_BACK_PORCH) * (V_ACTIVE + V_FRONT_PORCH + V_SYNC + V_BACK_PORCH) * 60 / 1000,
+	.hdisplay = H_ACTIVE,
+	.hsync_start = H_ACTIVE + H_FRONT_PORCH,
+	.hsync_end = H_ACTIVE + H_FRONT_PORCH + H_SYNC,
+	.htotal = H_ACTIVE + H_FRONT_PORCH + H_SYNC + H_BACK_PORCH,
+
+	.vdisplay = V_ACTIVE,
+	.vsync_start = V_ACTIVE + V_FRONT_PORCH,
+	.vsync_end = V_ACTIVE + V_FRONT_PORCH + V_SYNC,
+	.vtotal = V_ACTIVE + V_FRONT_PORCH + V_SYNC + V_BACK_PORCH,
 
 	.width_mm = 135,
 	.height_mm = 216,
