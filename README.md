@@ -146,13 +146,13 @@ xrandr --output DSI-1 --transform 1,0,0,0,1,60,0,0,1
         __overlay__ {
             status = "okay";
 
-            compatible = "starry,er88577";
+            compatible = "easy_quick,er88577b";
             backlight = <&panel_backlight>;
             reset-gpios = <&gpio1 1 1>;
             rotation = <270>;
             power-supply = <&vcc5v0_sys>;
-            bsit;
-            debug;
+            bsit;   // Enable Self-test
+            debug;  // More debug messages in dmesg
         };
     };
 };
